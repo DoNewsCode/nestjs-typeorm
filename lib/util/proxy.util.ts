@@ -2,16 +2,22 @@
  * 增加 typeorm tracing 功能
  * Created by Rain on 2021/7/6
  */
-import {
-  AsyncContext,
-  TRACER_CARRIER_INFO,
-  TracingModule,
-} from '@donews/nestjs-tracing';
 import { FORMAT_TEXT_MAP, Span, Tags } from 'opentracing';
 import { Connection, Repository, SelectQueryBuilder } from 'typeorm';
 
+import { optionalRequire } from './optional-require';
+
+const { AsyncContext, TRACER_CARRIER_INFO, TracingModule } = optionalRequire(
+  '@donews/nestjs-tracing',
+  () => require('@donews/nestjs-tracing'),
+);
+
 export class ProxyUtil {
   static proxyConn(conn: Connection): Connection {
+    if (!AsyncContext || !TracingModule || !TRACER_CARRIER_INFO) {
+      return conn;
+    }
+
     const queryOriginal = conn.query;
 
     conn['query'] = function (...args) {
