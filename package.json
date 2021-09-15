@@ -48,7 +48,7 @@
     "supertest": "6.1.6",
     "ts-jest": "27.0.5",
     "typeorm": "0.2.37",
-    "typescript": "4.3.5"
+    "typescript": "4.4.3"
   },
   "dependencies": {
     "opentracing": "0.14.5",
