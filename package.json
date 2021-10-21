@@ -20,8 +20,8 @@
     "update": "ncu -u -x husky,@types/node"
   },
   "devDependencies": {
-    "@commitlint/cli": "13.2.1",
-    "@commitlint/config-angular": "13.2.0",
+    "@commitlint/cli": "12.1.4",
+    "@commitlint/config-angular": "12.1.4",
     "@nestjs/common": "8.1.1",
     "@nestjs/core": "8.1.1",
     "@nestjs/platform-express": "8.1.1",
